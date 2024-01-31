@@ -8,20 +8,23 @@
 Vagrant.configure("2") do |config|
   PROXY_URL = "http://10.20.5.51:8888"
   NO_PROXY = "localhost, 127.0.0.1"
-  PROXY_ENABLE = true
+  PROXY_ENABLE = false
   BOX_IMAGE = "ubuntu/jammy64"
   BOX_NAME_WEB = "web.m340"
   BOX_NAME_DB = "db.m340"
   BASE_INT_NETWORK = "10.10.20"
   BASE_HOST_ONLY_NETWORK = "192.168.56"
 
+  if PROXY_ENABLE and not Vagrant.has_plugin?("vagrant-proxyconf")
+    system "vagrant plugin install vagrant-proxyconf"
+  end
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.define "web" do |subconfig|
+  config.vm.define BOX_NAME_WEB do |subconfig|
     subconfig.vm.box = BOX_IMAGE
     if PROXY_ENABLE
       subconfig.proxy.http = PROXY_URL
@@ -42,7 +45,7 @@ Vagrant.configure("2") do |config|
     subconfig.vm.provision "shell", path: "scripts/provision_web.sh"
   end
 
-  config.vm.define "db" do |subconfig|
+  config.vm.define BOX_NAME_DB do |subconfig|
     subconfig.vm.box = BOX_IMAGE
     if PROXY_ENABLE
       subconfig.proxy.http = PROXY_URL
