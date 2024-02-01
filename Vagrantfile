@@ -16,7 +16,7 @@ Vagrant.configure("2") do |config|
   BASE_HOST_ONLY_NETWORK = "192.168.56"
 
   if PROXY_ENABLE and not Vagrant.has_plugin?("vagrant-proxyconf")
-    system "vagrant plugin install vagrant-proxyconf"
+    config.vagrant.plugins = {"vagrant-proxyconf" => {}}
   end
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
