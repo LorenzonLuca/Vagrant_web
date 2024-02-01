@@ -4,7 +4,7 @@ https://github.com/JanRezzonico/LibreriaPhp
 
 Credenziali
 
-|  Username |  Password |
-|-----------|-----------|
-| user      | user      |
-| admin     | admin     |
+|  Username  |  Password  |
+|------------|------------|
+|    user    |    user    |
+|    admin   |    admin   |

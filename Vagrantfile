@@ -8,7 +8,7 @@
 Vagrant.configure("2") do |config|
   PROXY_URL = "http://10.20.5.51:8888"
   NO_PROXY = "localhost, 127.0.0.1"
-  PROXY_ENABLE = false
+  PROXY_ENABLE = true
   BOX_IMAGE = "ubuntu/jammy64"
   BOX_NAME_WEB = "web.m340"
   BOX_NAME_DB = "db.m340"

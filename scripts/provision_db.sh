@@ -1,5 +1,6 @@
 sudo apt update
 sudo apt install mysql-server -y
+
 sudo mysql
 sudo mysql < /vagrant/db/Libreria.sql
 sudo mysql -e "CREATE USER 'm340'@'10.10.20.%' IDENTIFIED BY 'Password&1';"
